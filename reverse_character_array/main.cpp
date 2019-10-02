@@ -8,7 +8,21 @@
 std::string ReverseString(const char* value)
 {
    std::string result {value};
-   std::reverse(result.begin(), result.end());
+   // I think this is the "correct" c++ solution.
+   //std::reverse(result.begin(), result.end());
+   // return result;
+
+   // in the spirit of doing real work in the kata...
+   auto fromEndIndex {result.length()};
+   if(0 == fromEndIndex)
+   {
+      return result;
+   }
+   --fromEndIndex;
+   for(size_t fromBeginIndex {0}; fromBeginIndex < fromEndIndex; ++fromBeginIndex, --fromEndIndex)
+   {
+      std::swap(result[fromBeginIndex], result[fromEndIndex]);
+   }
    return result;
 }
 
