@@ -7,6 +7,10 @@
 
 std::string ReverseString(const char* value)
 {
+   if(nullptr == value)
+   {
+      return "";
+   }
    std::string result {value};
    // I think this is the "correct" c++ solution.
    //std::reverse(result.begin(), result.end());
@@ -49,4 +53,9 @@ TEST_CASE("Single character")
 TEST_CASE("Empty")
 {
    REQUIRE(0 == ReverseString("").compare(""));
+}
+
+TEST_CASE("Null")
+{
+   REQUIRE(0 == ReverseString(nullptr).compare(""));
 }
